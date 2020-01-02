@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:oop/ui/Widgets/DetailsCard.dart';
-import 'package:oop/ui/Widgets/TimeSelector.dart';
-import 'package:oop/core/GetProfit.dart';
+import 'package:object_oriented_design_app/ui/Widgets/DetailsCard.dart';
+import 'package:object_oriented_design_app/ui/Widgets/TimeSelector.dart';
+import 'package:object_oriented_design_app/core/GetProfit.dart';
 
 class ShowProfitPage extends StatefulWidget {
   @override
@@ -20,27 +20,32 @@ class _ShowProfitPageState extends State<ShowProfitPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(),
-      home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          textDirection: TextDirection.rtl,
           children: <Widget>[
-            TimePeriodSelector(
-                startDate: startDate,
-                endDate: endDate,
-                onChanged: (pStartDate, pEndDate, _) {
-                  setState(() {
-                    startDate = pStartDate;
-                    endDate = pEndDate;
-                  });
-                }),
-            // FutureBuilder(
-            // future: _getData(startDate, endDate),
-            // builder: (context, snap) =>
-            // DetailsCard(snap.data[0], snap.data[1]))
+            Text('درآمد'),
           ],
-        ),
+        )
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          TimePeriodSelector(
+              startDate: startDate,
+              endDate: endDate,
+              onChanged: (pStartDate, pEndDate, _) {
+                setState(() {
+                  startDate = pStartDate;
+                  endDate = pEndDate;
+                });
+              }),
+          FutureBuilder(
+              future: _getData(startDate, endDate),
+              builder: (context, snap) =>
+                  DetailsCard(snap.data[0], snap.data[1]))
+        ],
       ),
     );
   }

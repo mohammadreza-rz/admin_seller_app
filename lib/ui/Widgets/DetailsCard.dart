@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oop/ui/shared/CustomCard.dart';
+import 'package:object_oriented_design_app/ui/shared/CustomCard.dart';
 
 class DetailsCard extends StatefulWidget {
   DetailsCard(

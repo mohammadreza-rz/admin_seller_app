@@ -3,6 +3,7 @@ import 'pages/home_page.dart';
 import 'pages/manage_users.dart';
 import 'pages/add_product.dart';
 import 'pages/soled_products.dart';
+import 'package:object_oriented_design_app/ui/views/ShowProfitPage.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -14,5 +15,6 @@ void main() => runApp(MaterialApp(
         '/acceptance': (context) => ManageUsers('مدیریت'),
         '/addNew': (context) => AddProduct(),
         '/soldProducts': (context) => SoledProducts(),
+        '/profitPage': (context) => ShowProfitPage(),
       },
     ));
