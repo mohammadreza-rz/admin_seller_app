@@ -45,8 +45,8 @@ class _AddProductState extends State<AddProduct> {
                               textDirection: TextDirection.rtl,
                               child: TextFormField(
                                   decoration: InputDecoration(
-                                    labelText: 'نام محصول',
-                                  )))),
+                                labelText: 'نام محصول',
+                              )))),
                       Padding(
                           padding: EdgeInsets.all(12),
                           child: new Directionality(
@@ -54,7 +54,7 @@ class _AddProductState extends State<AddProduct> {
                               child: TextFormField(
                                 decoration: InputDecoration(labelText: 'قیمت'),
                                 scrollPadding:
-                                EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                    EdgeInsets.fromLTRB(12, 12, 12, 12),
                               ))),
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -67,7 +67,8 @@ class _AddProductState extends State<AddProduct> {
 
                                 isExpanded: true,
                                 elevation: 16,
-                                style: TextStyle(color: Colors.black54),
+                                style: TextStyle(
+                                    color: Colors.black54, fontFamily: 'vazir'),
                                 underline: Container(
                                   height: 1,
                                   color: Colors.black26,
@@ -118,7 +119,7 @@ class _AddProductState extends State<AddProduct> {
                               textDirection: TextDirection.rtl,
                               child: TextFormField(
                                 decoration:
-                                InputDecoration(labelText: 'توضیحات'),
+                                    InputDecoration(labelText: 'توضیحات'),
                                 keyboardType: TextInputType.multiline,
                                 maxLines: 5,
                               ))),
@@ -130,7 +131,6 @@ class _AddProductState extends State<AddProduct> {
                               onPressed: () {}))
                     ]),
                   ),
-
                 ],
               ),
             ),

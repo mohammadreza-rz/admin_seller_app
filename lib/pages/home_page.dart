@@ -13,8 +13,14 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('مدیریت فروشگاه'),
+              child: Center(
+                child: Text('مدیریت فروشگاه'),
+              ),
               decoration: BoxDecoration(color: Colors.blue),
+            ),
+            ListTile(
+              title: Text('پروفایل'),
+              onTap: () {},
             ),
             ListTile(
               title: Text('مدیریت کاربران'),

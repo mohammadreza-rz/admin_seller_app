@@ -8,6 +8,7 @@ void main() => runApp(MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'vazir'
       ),
       initialRoute: '/',
       routes: {
