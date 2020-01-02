@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:object_oriented_design_app/pages/users.dart';
 
 
 class ManageUsers extends StatefulWidget {
@@ -15,6 +16,32 @@ class ManageUsers extends StatefulWidget {
 }
 
 class _ManageUsersState extends State<ManageUsers> {
+  List<bool> itemCheck = [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+  ];
+
+  List<bool> itemCheck1 = [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+  ];
+
   @override
   Widget build(BuildContext context) {
 
@@ -40,10 +67,10 @@ class _ManageUsersState extends State<ManageUsers> {
               appBar: PreferredSize(
                 child: Container(
                   child: TabBar(
-                    tabs: [
-                      Text('فروشندگان', style: TextStyle(fontSize: 25)),
-                      Text('همه کاربران', style: TextStyle(fontSize: 25)),
-                    ]
+                      tabs: [
+                        Text('فروشندگان', style: TextStyle(fontSize: 25)),
+                        Text('همه کاربران', style: TextStyle(fontSize: 25)),
+                      ]
                   ),
                   color: Theme.of(context).primaryColor,
                 ),
@@ -52,8 +79,8 @@ class _ManageUsersState extends State<ManageUsers> {
 
               body: TabBarView(
                   children: [
-                    Center(child: Text('ok1')),
-                    Center(child: Text('pk2')),
+                    Center(child: new Users(itemCheck, '1')),
+                    Center(child: new Users(itemCheck1, '2')),
                   ]
               ),
             ),
