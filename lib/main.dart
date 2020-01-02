@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/managment.dart';
+import 'pages/home_page.dart';
+import 'pages/manage_users.dart';
+import 'pages/add_product.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -9,47 +11,10 @@ void main() => runApp(MaterialApp(
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => MyHome(),
-        '/acceptance': (context) => Test('مدیریت'),
-//        '/addNew': (context) => MyHomePage(),
+        '/': (context) => HomePage(),
+        '/acceptance': (context) => ManageUsers('مدیریت'),
+        '/addNew': (context) => AddProduct(),
       },
     ));
 
-
-class MyHome extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('مدیریت فروشگاه')),
-      body: Center(
-        child: Text('test'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('مدیریت فروشگاه'),
-              decoration: BoxDecoration(color: Colors.blue),
-            ),
-            ListTile(
-              title: Text('تایید صلاحیت'),
-              onTap: () {
-                Navigator.pushNamed(context, '/acceptance');
-//                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('افزودن کالا'),
-              onTap: () {
-                Navigator.pushNamed(context, '/addNew');
-//                Navigator.pop(context);
-              },
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
 

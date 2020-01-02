@@ -5,16 +5,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
 
-class Test extends StatefulWidget {
+class ManageUsers extends StatefulWidget {
   final String title;
 
-  Test(this.title);
+  ManageUsers(this.title);
 
   @override
-  _TestState createState() => _TestState();
+  _ManageUsersState createState() => _ManageUsersState();
 }
 
-class _TestState extends State<Test> {
+class _ManageUsersState extends State<ManageUsers> {
   @override
   Widget build(BuildContext context) {
 
