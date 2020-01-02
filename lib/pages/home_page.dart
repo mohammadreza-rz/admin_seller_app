@@ -33,6 +33,12 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/addNew');
               },
+            ),
+            ListTile(
+              title: Text('اجناس فروخته شده'),
+              onTap: (){
+                Navigator.pushNamed(context, '/soldProducts');
+              },
             )
           ],
         ),
