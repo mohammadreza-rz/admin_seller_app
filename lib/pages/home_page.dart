@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('مدیریت فروشگاه')),
       body: Center(
-        child: Text('test'),
+        child: Text('از منو سمت چپ انتخاب کنید'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -33,7 +33,18 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/addNew');
               },
-            )
+            ),
+            ListTile(
+              title: Text('اجناس فروخته شده'),
+              onTap: () {
+                Navigator.pushNamed(context, '/soldProducts');
+              },
+            ),
+            ListTile(
+                title: Text('مشاهده سود'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/profitPage');
+                }),
           ],
         ),
       ),

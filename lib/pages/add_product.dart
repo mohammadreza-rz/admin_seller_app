@@ -28,7 +28,12 @@ class _AddProductState extends State<AddProduct> {
     return Scaffold(
         backgroundColor: Color(0xffE0E0E0),
         appBar: AppBar(
-          title: Text('form'),
+          title: Row(
+            textDirection: TextDirection.rtl,
+            children: <Widget>[
+              Text('فرم'),
+            ],
+          ),
         ),
         body: Builder(
           builder: (context) => Form(

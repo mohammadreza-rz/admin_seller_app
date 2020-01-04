@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'pages/manage_users.dart';
 import 'pages/add_product.dart';
+import 'pages/soled_products.dart';
+import 'package:object_oriented_design_app/ui/views/ShowProfitPage.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'vazir'
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'vazir'),
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
         '/acceptance': (context) => ManageUsers('مدیریت'),
         '/addNew': (context) => AddProduct(),
+        '/soldProducts': (context) => SoledProducts(),
+        '/profitPage': (context) => ShowProfitPage(),
       },
     ));
-
-
