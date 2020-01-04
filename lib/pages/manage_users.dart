@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
-import 'package:object_oriented_design_app/pages/users.dart';
+import 'package:object_oriented_design_app/component/users.dart';
 
 
 class ManageUsers extends StatefulWidget {
