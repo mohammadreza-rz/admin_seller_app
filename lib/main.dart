@@ -15,6 +15,9 @@ void main() => runApp(MaterialApp(
         '/acceptance': (context) => ManageUsers('مدیریت'),
         '/addNew': (context) => AddProduct(),
         '/soldProducts': (context) => SoledProducts(),
-        '/profitPage': (context) => ShowProfitPage(),
+        '/profitPage': (context) => ShowProfitPage(
+              token:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEwMjciLCJyb2xlIjoiU2FsZXNtYW4iLCJJZCI6IjEwMjciLCJuYmYiOjE1ODAzNDAzMDYsImV4cCI6MTU4MDk0NTEwNiwiaWF0IjoxNTgwMzQwMzA2fQ.aGQbjP3XUvanqYLUNHfwDyddaOI1HXwozdSLo3KbwbU",
+            ),
       },
     ));

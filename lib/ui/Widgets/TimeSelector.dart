@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:oop/ui/shared/CustomCard.dart';
+import 'package:object_oriented_design_app/ui/shared/CustomCard.dart';
 
 const timePeriods = <String>['کل', 'روز', 'هفته', 'ماه', 'سفارشی'];
 

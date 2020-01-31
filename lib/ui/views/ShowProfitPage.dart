@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:oop/ui/Widgets/DetailsCard.dart';
-import 'package:oop/ui/Widgets/TimeSelector.dart';
-import 'package:oop/core/GetProfit.dart';
+import 'package:object_oriented_design_app/core/GetProfit.dart';
+import 'package:object_oriented_design_app/ui/Widgets/DetailsCard.dart';
+import 'package:object_oriented_design_app/ui/Widgets/TimeSelector.dart';
 
 class ShowProfitPage extends StatefulWidget {
   final String token;
