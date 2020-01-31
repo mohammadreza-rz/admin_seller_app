@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:object_oriented_design_app/ui/Widgets/DetailsCard.dart';
-import 'package:object_oriented_design_app/ui/Widgets/TimeSelector.dart';
-import 'package:object_oriented_design_app/core/GetProfit.dart';
+import 'package:oop/ui/Widgets/DetailsCard.dart';
+import 'package:oop/ui/Widgets/TimeSelector.dart';
+import 'package:oop/core/GetProfit.dart';
 
 class ShowProfitPage extends StatefulWidget {
+  final String token;
+  const ShowProfitPage({Key key, this.token}) : super(key: key);
   @override
   _ShowProfitPageState createState() => _ShowProfitPageState();
 }
@@ -13,39 +15,36 @@ class _ShowProfitPageState extends State<ShowProfitPage> {
   DateTime startDate = DateTime(now.year - 300, now.month, now.day);
   DateTime endDate = now;
 
-  _getData(DateTime startDate, DateTime endDate) async {
-    List result = await Back().GetProfit(startDate, endDate);
-    return result;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          textDirection: TextDirection.rtl,
+    return MaterialApp(
+      theme: ThemeData(),
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text('درآمد'),
+            SizedBox(height: 17),
+            TimePeriodSelector(
+                startDate: startDate,
+                endDate: endDate,
+                onChanged: (pStartDate, pEndDate, _) {
+                  setState(() {
+                    startDate = pStartDate;
+                    endDate = pEndDate;
+                  });
+                }),
+            FutureBuilder(
+                future: Back().GetProfit(startDate, endDate, widget.token),
+                builder: (context, snap) {
+                  if (snap != null && snap.hasData) {
+                    String string = " " + snap.data.toString();
+                    return DetailsCard(string, string);
+                  } else {
+                    return DetailsCard("", "");
+                  }
+                })
           ],
-        )
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          TimePeriodSelector(
-              startDate: startDate,
-              endDate: endDate,
-              onChanged: (pStartDate, pEndDate, _) {
-                setState(() {
-                  startDate = pStartDate;
-                  endDate = pEndDate;
-                });
-              }),
-          FutureBuilder(
-              future: _getData(startDate, endDate),
-              builder: (context, snap) =>
-                  DetailsCard(snap.data[0], snap.data[1]))
-        ],
+        ),
       ),
     );
   }
