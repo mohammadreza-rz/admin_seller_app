@@ -89,6 +89,7 @@ class _SalesManState extends State<SalesMan> {
                 value: list[index]['suspend'],
                 onChanged: (newVal) {
                   setState(() {
+                    toggleSuspend(list[index]['id']);
                     list[index]['suspend'] = newVal;
                   });
                 },

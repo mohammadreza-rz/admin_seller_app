@@ -34,3 +34,14 @@ getCustomerInfo() async{
   return body;
 
 }
+
+toggleSuspend(int id) async{
+  String url = 'http://198.143.182.157/api/Salesmans/Suspend?id=$id';
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+    "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEwNDgiLCJyb2xlIjoiQWRtaW4iLCJJZCI6IjEwNDgiLCJuYmYiOjE1ODAzNzExOTMsImV4cCI6MTU4MDk3NTk5MywiaWF0IjoxNTgwMzcxMTkzfQ.lV_HA4Bi_imrPNC7zm4lDIA41nwDr7IWvcGvVCvdxbY"
+  };
+
+  Response response = await post(url, headers: headers);
+  return response.statusCode;
+}
