@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:object_oriented_design_app/ui/shared/CustomCard.dart';
 
-const timePeriods = <String>['Recent', 'Today', 'Week', 'Month', 'Custom'];
+const timePeriods = <String>['کل', 'روز', 'هفته', 'ماه', 'سفارشی'];
 
 class TimePeriodSelector extends StatefulWidget {
   const TimePeriodSelector(
       {Key key,
-      this.defaultTimePeriodSelected: 'Recent',
+      this.defaultTimePeriodSelected: 'کل',
       this.startDate,
       this.endDate,
       this.onChanged})
@@ -49,20 +49,20 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
               DateTime today = DateTime(now.year, now.month, now.day + 1);
               setState(() => selectedTimePeriod = value);
               switch (value) {
-                case 'Recent':
+                case 'کل':
                   start = DateTime(now.year - 300, now.month, now.day);
                   end = today;
                   break;
-                case 'Today':
+                case 'روز':
                   start = DateTime(now.year, now.month, now.day);
                   end = start.add(Duration(days: 1));
                   break;
-                case 'Week':
+                case 'هفته':
                   int days = now.weekday - 1;
                   start = now.subtract(Duration(days: days));
                   end = today;
                   break;
-                case 'Month':
+                case 'ماه':
                   int days = now.day - 1;
                   start = today.subtract(Duration(days: days));
                   end = today;
@@ -71,9 +71,7 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
                   start = widget.startDate;
                   end = widget.endDate;
               }
-              List<DateTime> list = new List();
-              list.add(widget.startDate);
-              list.add(widget.endDate);
+
               widget.onChanged(start, end, selectedTimePeriod);
             },
             items: timePeriods
@@ -81,11 +79,11 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
                   (String value) => DropdownMenuItem<String>(
                     value: value,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(
                         value,
-                        textAlign: TextAlign.right,
-                        // textDirection: TextDirection.ltr,
+                        textAlign: TextAlign.center,
+                        // textDirection: TextDirection.RTL,
                         style: TextStyle(
                             color: Colors.grey[800],
                             fontSize: 14,
@@ -96,30 +94,24 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
                 )
                 .toList(),
           ),
-          if (selectedTimePeriod == 'Custom') SizedBox(width: 15),
-          if (selectedTimePeriod == 'Custom')
+          if (selectedTimePeriod == 'سفارشی') SizedBox(width: 15),
+          if (selectedTimePeriod == 'سفارشی')
             DatePickerButton(
               title: 'From',
               selectedDate: widget.startDate,
               onChanged: (date) {
                 setState(() {
-                  List<DateTime> list = new List();
-                  list.add(date);
-                  list.add(widget.endDate);
                   widget.onChanged(date, widget.endDate, selectedTimePeriod);
                 });
               },
             ),
-          if (selectedTimePeriod == 'Custom') SizedBox(width: 15),
-          if (selectedTimePeriod == 'Custom')
+          if (selectedTimePeriod == 'سفارشی') SizedBox(width: 15),
+          if (selectedTimePeriod == 'سفارشی')
             DatePickerButton(
               title: 'To',
               selectedDate: widget.endDate,
               onChanged: (date) {
                 setState(() {
-                  List<DateTime> list = new List();
-                  list.add(widget.startDate);
-                  list.add(date);
                   widget.onChanged(widget.startDate, date, selectedTimePeriod);
                 });
               },
