@@ -152,7 +152,7 @@ class _Products extends State<Products> {
     };
 
     String productBody =
-        '{"sortColumn": "id","order": "asc","take": 10,"skip": 0,"expressionFilters": []}';
+        '{"sortColumn": "id","order": "des","take": 30,"skip": 0,"expressionFilters": []}';
     Response response = await post(url, body: productBody, headers: headers);
     final body = json.decode(utf8.decode(response.bodyBytes));
 
@@ -192,7 +192,7 @@ class _Products extends State<Products> {
   Widget _buildItem(BuildContext context, int index) {
     Uint8List imgBytes;
     if (list[index]['productImages'] != null)
-//      imgBytes = base64.decode(list[index]['productImages'][0]['imageContent']);
+      imgBytes = base64.decode(list[index]['productImages'][0]['imageContent']);
 
       return Padding(
         padding: EdgeInsets.all(8),

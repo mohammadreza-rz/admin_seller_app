@@ -26,11 +26,13 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     Future getImage() async {
-      image= await ImagePicker.pickImage(source: ImageSource.gallery);
+      image = await ImagePicker.pickImage(source: ImageSource.gallery);
       String base64Image = base64Encode(image.readAsBytesSync());
       print(base64Image.length);
       setState(() {
-        _addProduct.productImages=[{"imageContent":base64Image}];
+        _addProduct.productImages = [
+          {"imageContent": base64Image}
+        ];
       });
     }
 
@@ -76,8 +78,7 @@ class _AddProductState extends State<AddProduct> {
                                     }
                                   },
                                   onSaved: (val) =>
-                                      setState(() => _addProduct.name = val)
-                              ))),
+                                      setState(() => _addProduct.name = val)))),
 
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -91,9 +92,9 @@ class _AddProductState extends State<AddProduct> {
                                   }
                                 },
                                 onSaved: (val) => setState(
-                                        () => _addProduct.price = int.parse(val)),
+                                    () => _addProduct.price = int.parse(val)),
                                 scrollPadding:
-                                EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                    EdgeInsets.fromLTRB(12, 12, 12, 12),
                               ))),
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -115,7 +116,7 @@ class _AddProductState extends State<AddProduct> {
                                 onChanged: (String newValue) {
                                   setState(() {
                                     dropdownValue = newValue;
-                                    _addProduct.category=newValue;
+                                    _addProduct.category = newValue;
                                   });
                                 },
                                 items: <String>[
@@ -137,15 +138,14 @@ class _AddProductState extends State<AddProduct> {
                               textDirection: TextDirection.rtl,
                               child: TextFormField(
                                   decoration:
-                                  InputDecoration(labelText: 'تعداد'),
+                                      InputDecoration(labelText: 'تعداد'),
                                   validator: (value) {
                                     if (value.isEmpty) {
                                       return 'لطفا تعداد را وارد کنید';
                                     }
                                   },
-                                  onSaved: (val) => setState(
-                                          () => _addProduct.count = int.parse(val))
-                              ))),
+                                  onSaved: (val) => setState(() =>
+                                      _addProduct.count = int.parse(val))))),
 
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -154,8 +154,7 @@ class _AddProductState extends State<AddProduct> {
                               child: TextFormField(
                                   decoration: InputDecoration(labelText: 'رنگ'),
                                   onSaved: (val) => setState(
-                                          () => _addProduct.color = val)
-                              ))),
+                                      () => _addProduct.color = val)))),
 
                       Padding(
                           padding: EdgeInsets.all(12),
@@ -163,12 +162,11 @@ class _AddProductState extends State<AddProduct> {
                               textDirection: TextDirection.rtl,
                               child: TextFormField(
                                 decoration:
-                                InputDecoration(labelText: 'تاریخ ثبت'),
+                                    InputDecoration(labelText: 'تاریخ ثبت'),
                                 onSaved: (val) => setState(
-                                        () => _addProduct.recordTime = val),
+                                    () => _addProduct.recordTime = val),
                                 keyboardType: TextInputType.multiline,
-                              )
-                          )),
+                              ))),
 //
 //
 //                      SizedBox(
@@ -181,7 +179,8 @@ class _AddProductState extends State<AddProduct> {
                             alignment: Alignment.center,
                             child: image == null
                                 ? Text('No image selected.')
-                                : Image.file(image, width: 200, height: 200, fit: BoxFit.cover),
+                                : Image.file(image,
+                                    width: 200, height: 200, fit: BoxFit.cover),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 60.0),
@@ -201,17 +200,15 @@ class _AddProductState extends State<AddProduct> {
                         height: 20.0,
                       ),
 
-
-
                       Padding(
                           padding: EdgeInsets.all(12),
                           child: new Directionality(
                               textDirection: TextDirection.rtl,
                               child: TextFormField(
                                 decoration:
-                                InputDecoration(labelText: 'توضیحات'),
+                                    InputDecoration(labelText: 'توضیحات'),
                                 onSaved: (val) => setState(
-                                        () => _addProduct.description = val),
+                                    () => _addProduct.description = val),
                                 keyboardType: TextInputType.multiline,
                                 maxLines: 4,
                               ))),
@@ -224,7 +221,7 @@ class _AddProductState extends State<AddProduct> {
                                 final form = _formKey.currentState;
                                 if (form.validate()) {
                                   form.save();
-                                  return _makePostRequest(setState,context);
+                                  return _makePostRequest(setState, context);
                                 }
                               })),
 //                      Padding(
@@ -262,23 +259,25 @@ class _AddProductState extends State<AddProduct> {
 //    Scaffold.of(context).showSnackBar(SnackBar(content: Text('submittt')));
 //  }
 
-  Future _makePostRequest(StateSetter state,BuildContext context) async {
+  Future _makePostRequest(StateSetter state, BuildContext context) async {
     try {
-      Map<String, String> headers = {"Content-type": "application/json"};
-      String jsonPost=jsonEncode(_addProduct);
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "Authorization":
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEwNDgiLCJyb2xlIjoiQWRtaW4iLCJJZCI6IjEwNDgiLCJuYmYiOjE1ODAzNzExOTMsImV4cCI6MTU4MDk3NTk5MywiaWF0IjoxNTgwMzcxMTkzfQ.lV_HA4Bi_imrPNC7zm4lDIA41nwDr7IWvcGvVCvdxbY"
+      };
+      String jsonPost = jsonEncode(_addProduct);
 
-      final response =
-      await http.post('http://198.143.182.157/api/Products/Insert',headers: headers, body:jsonPost
-      ).then((http.Response response) {
-        print(_addProduct.productImages);
-
+      final response = await http
+          .post('http://198.143.182.157/api/Products/Insert',
+              headers: headers, body: jsonPost)
+          .then((http.Response response) {
+        print("oooook : ${_addProduct.productImages}");
       }).catchError((onError) {
         print("Error: $onError");
       });
-
     } catch (e) {
       print("Exception Caught: $e");
     }
-
   }
 }
